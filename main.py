@@ -3,6 +3,7 @@ import numpy as np
 import time
 
 
+# Обчислення k-го члена ряду Фур'є у тригонометричній формі
 def fourier_term(x, k, N):
     angle = 2 * np.pi * k * np.arange(N) / N
     cos_term = np.sum(x * np.cos(angle))
@@ -10,6 +11,7 @@ def fourier_term(x, k, N):
     return cos_term, sin_term
 
 
+# Обчислення коефіцієнта Фур'є C_k = A_k + jB_k з N членів
 def fourier_coefficients(x, N):
     coefficients = np.zeros(N, dtype=complex)
 
@@ -20,6 +22,7 @@ def fourier_coefficients(x, N):
     return coefficients
 
 
+# Оцінка часу обчислення та кількості операцій
 def time_and_operation_count(x, N):
     start_time = time.time()
 
@@ -37,6 +40,7 @@ def time_and_operation_count(x, N):
     return elapsed_time, total_operations, coeffs
 
 
+# Побудова графіків амплітудного та фазового спектрів
 def plot_spectra(coeffs, N):
     amplitude_spectrum = np.abs(coeffs)
     phase_spectrum = np.angle(coeffs)
